@@ -3,6 +3,7 @@ package structs
 
 import (
 	"fmt"
+	"log"
 
 	"reflect"
 )
@@ -104,6 +105,9 @@ func (s *Struct) FillMap(out map[string]interface{}) {
 			name = tagName
 		}
 
+		log.Println(tagName)
+		log.Println(name)
+
 		// if the value is a zero value and the field is marked as omitempty do
 		// not include
 		if tagOpts.Has("omitempty") {
@@ -146,6 +150,7 @@ func (s *Struct) FillMap(out map[string]interface{}) {
 		} else {
 			out[name] = finalVal
 		}
+		log.Println(out)
 	}
 }
 
